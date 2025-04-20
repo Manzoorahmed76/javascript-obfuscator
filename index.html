@@ -29,3 +29,90 @@
     <!-- Your existing content remains untouched -->
     <main class="max-w-5xl mx-auto space-y-8">
       <!-- Existing elements below... -->
+
+    <main class="max-w-5xl mx-auto space-y-8">
+      <div class="bg-gray-800 p-6 rounded-2xl shadow-lg">
+        <label for="input-code" class="block text-lg font-semibold mb-2">Input Code</label>
+        <textarea id="input-code" class="w-full h-40 p-4 bg-gray-700 rounded-lg text-sm resize-none focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="alert('XSS')">alert('XSS')</textarea>
+        <div class="text-sm text-gray-400 mt-2">Length: <span id="input-code-length">0</span></div>
+      </div>
+
+      <div class="text-center">
+        <button id="obfuscate-button" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-lg transition flex items-center justify-center gap-2">
+          <i data-lucide="shield-off"></i>
+          <span>Obfuscate</span>
+        </button>
+      </div>
+
+      <div class="bg-gray-800 p-6 rounded-2xl shadow-lg">
+        <label for="output-code" class="block text-lg font-semibold mb-2">Obfuscated Code</label>
+        <textarea id="output-code" class="w-full h-40 p-4 bg-gray-700 rounded-lg text-sm resize-none" readonly></textarea>
+        <div class="text-sm text-gray-400 mt-2">Length: <span id="output-code-length">0</span></div>
+        <div class="mt-4 text-right">
+          <button id="run-button" class="px-4 py-2 bg-green-600 hover:bg-green-700 rounded-lg text-sm flex items-center gap-2">
+            <i data-lucide="play"></i>
+            <span>Run obfuscated code</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Options -->
+      <div class="bg-gray-800 p-6 rounded-2xl shadow-lg space-y-6">
+        <h2 class="text-2xl font-bold mb-4">Options</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- Variable Settings -->
+          <div>
+            <h3 class="text-lg font-semibold mb-2">Variable</h3>
+            <div class="space-y-2">
+              <label class="flex items-center gap-2">
+                <input type="checkbox" id="option-use-variable" checked class="accent-indigo-500" />
+                Use variable
+              </label>
+              <input type="text" id="option-variable-candidates" placeholder="가나다あいう" value="가나다あいう" class="w-full p-2 rounded bg-gray-700 text-sm" />
+              <div>
+                <label for="option-iteration-count" class="block text-sm mb-1">Iteration Count</label>
+                <input type="number" id="option-iteration-count" min="1" placeholder="50" value="50" class="w-full p-2 rounded bg-gray-700 text-sm" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Blacklist Settings -->
+          <div>
+            <h3 class="text-lg font-semibold mb-2">Blacklist</h3>
+            <div class="grid grid-cols-2 gap-2 text-sm">
+              <label><input type="checkbox" id="blacklist-upper-case" checked class="accent-red-500" /> Upper Case</label>
+              <label><input type="checkbox" id="blacklist-lower-case" checked class="accent-red-500" /> Lower Case</label>
+              <label><input type="checkbox" id="blacklist-number" class="accent-red-500" /> Number</label>
+              <label><input type="checkbox" id="blacklist-space" class="accent-red-500" /> Space ( )</label>
+              <label><input type="checkbox" id="blacklist-dollar" class="accent-red-500" /> Dollar ($)</label>
+              <label><input type="checkbox" id="blacklist-percent" class="accent-red-500" /> Percent (%)</label>
+              <label><input type="checkbox" id="blacklist-asterisk" class="accent-red-500" /> Asterisk (*)</label>
+              <label><input type="checkbox" id="blacklist-underscore" class="accent-red-500" /> Underscore (_)</label>
+              <label><input type="checkbox" id="blacklist-equals" disabled class="accent-red-500" /> Equals (=)</label>
+              <label><input type="checkbox" id="blacklist-single-quotes" class="accent-red-500" /> Single quotes (')</label>
+              <label><input type="checkbox" id="blacklist-double-quotes" class="accent-red-500" /> Double quotes (")</label>
+              <label><input type="checkbox" id="blacklist-backtick" class="accent-red-500" /> Backtick (`)</label>
+              <label><input type="checkbox" id="blacklist-dot" class="accent-red-500" /> Dot (.)</label>
+              <label><input type="checkbox" id="blacklist-slash" class="accent-red-500" /> Slash (/)</label>
+              <label><input type="checkbox" id="blacklist-backslash" class="accent-red-500" /> Backslash (\)</label>
+              <label><input type="checkbox" id="blacklist-curly-brackets" class="accent-red-500" /> Curly Brackets ({})</label>
+              <label><input type="checkbox" id="blacklist-angle-brackets" class="accent-red-500" /> Angle Brackets (<>)</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="text-center mt-10 text-sm text-gray-500">
+      <p>
+        GitHub:
+        <a href="https://github.com/nbsp1221/javascript-obfuscator" target="_blank" class="underline hover:text-white">github.com/nbsp1221/javascript-obfuscator</a>
+      </p>
+      <p class="mt-1">&copy; <a href="https://retn0.kr" target="_blank" class="underline hover:text-white">nbsp1221</a>. All rights reserved.</p>
+    </footer>
+
+    <script>
+      lucide.createIcons();
+    </script>
+  </body>
+</html>
