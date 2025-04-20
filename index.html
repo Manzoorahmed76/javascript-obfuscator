@@ -33,16 +33,11 @@
         <div class="text-sm text-gray-400 mt-2">Length: <span id="input-code-length">0</span></div>
       </div>
 
-      <!-- Centered Buttons -->
-      <div class="flex flex-col items-center justify-center gap-4">
-        <button id="obfuscate-button" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-lg transition flex items-center justify-center gap-2">
+      <!-- Obfuscate Button Centered -->
+      <div class="text-center">
+        <button id="obfuscate-button" class="w-fit mx-auto px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-lg transition flex items-center justify-center gap-2">
           <i data-lucide="shield-off"></i>
           <span>Obfuscate</span>
-        </button>
-
-        <button id="run-button" class="px-4 py-2 bg-green-600 hover:bg-green-700 rounded-lg text-sm flex items-center gap-2">
-          <i data-lucide="play"></i>
-          <span>Run obfuscated code</span>
         </button>
       </div>
 
@@ -50,6 +45,14 @@
         <label for="output-code" class="block text-lg font-semibold mb-2">Obfuscated Code</label>
         <textarea id="output-code" class="w-full h-40 p-4 bg-gray-700 rounded-lg text-sm resize-none" readonly></textarea>
         <div class="text-sm text-gray-400 mt-2">Length: <span id="output-code-length">0</span></div>
+
+        <!-- Run Button Centered -->
+        <div class="mt-4 text-center">
+          <button id="run-button" class="w-fit mx-auto px-4 py-2 bg-green-600 hover:bg-green-700 rounded-lg text-sm flex items-center gap-2">
+            <i data-lucide="play"></i>
+            <span>Run obfuscated code</span>
+          </button>
+        </div>
       </div>
 
       <!-- Options -->
