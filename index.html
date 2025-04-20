@@ -1,151 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>JavaScript Obfuscator</title>
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
-		<link rel="stylesheet" href="./styles/common.css">
-		<script src="./scripts/js-obfuscator.js"></script>
-		<script src="./scripts/index.js"></script>
-	</head>
-	<body>
-		<header>
-			<div class="link-title">
-				<a href="./">JavaScript Obfuscator</a>
-			</div>
-		</header>
-		<main>
-			<div class="main-contents">
-				<div class="code-area">
-					<textarea id="input-code" placeholder="alert('XSS')">alert('XSS')</textarea>
-					<div class="length">Length: <span id="input-code-length">0</span></div>
-				</div>
-				<div class="button-area">
-					<button id="obfuscate-button">↓↓↓ Obfuscate ↓↓↓</button>
-				</div>
-				<div class="code-area">
-					<textarea id="output-code"></textarea>
-					<div class="length">Length: <span id="output-code-length">0</span></div>
-					<div class="run-button"><button id="run-button">Run obfuscated code</button></div>
-				</div>
-				<fieldset>
-					<legend>Option</legend>
-					<div class="fieldset-area">
-						<section>
-							<div class="title">Variable</div>
-							<div class="checkbox-area">
-								<div>
-									<input type="checkbox" id="option-use-variable" checked>
-									<label for="option-use-variable">Use variable</label>
-								</div>
-								<div class="input-text">
-									<div class="explain">
-										<div>List to use as a variable name except for '$' and '_'</div>
-									</div>
-									<input type="text" id="option-variable-candidates" placeholder="가나다あいう" value="가나다あいう">
-								</div>
-								<div class="input-text">
-									<div class="explain">
-										<div>Iteration count of the random function</div>
-										<p>The larger this value, the slower running time, but the probability to get short code would be increased.</p>
-									</div>
-									<input type="number" id="option-iteration-count" min="1" placeholder="50" value="50">
-								</div>
-							</div>
-						</section>
-					</div>
-				</fieldset>
-				<fieldset>
-					<legend>Blacklist</legend>
-					<div class="fieldset-area">
-						<section>
-							<div class="title">Basic</div>
-							<div class="checkbox-area">
-								<div>
-									<input type="checkbox" id="blacklist-upper-case" checked>
-									<label for="blacklist-upper-case">Upper case</label>
-								</div>
-								<div>
-									<input type="checkbox" id="blacklist-lower-case" checked>
-									<label for="blacklist-lower-case">Lower case</label>
-								</div>
-								<div>
-									<input type="checkbox" id="blacklist-number">
-									<label for="blacklist-number">Number</label>
-								</div>
-							</div>
-						</section>
-						<section>
-							<div class="title">Special</div>
-							<div class="checkbox-area">
-								<div>
-									<input type="checkbox" id="blacklist-space">
-									<label for="blacklist-space">Space ( )</label>
-								</div>
-								<div>
-									<input type="checkbox" id="blacklist-dollar">
-									<label for="blacklist-dollar">Dollar ($)</label>
-								</div>
-								<div>
-									<input type="checkbox" id="blacklist-percent">
-									<label for="blacklist-percent">Percent (%)</label>
-								</div>
-								<div>
-									<input type="checkbox" id="blacklist-asterisk">
-									<label for="blacklist-asterisk">Asterisk (*)</label>
-								</div>
-								<div>
-									<input type="checkbox" id="blacklist-underscore">
-									<label for="blacklist-underscore">Underscore (_)</label>
-								</div>
-								<div>
-									<input type="checkbox" id="blacklist-equals" disabled>
-									<label for="blacklist-equals">Equals (=)</label>
-								</div>
-								<div>
-									<input type="checkbox" id="blacklist-single-quotes">
-									<label for="blacklist-single-quotes">Single quotes (')</label>
-								</div>
-								<div>
-									<input type="checkbox" id="blacklist-double-quotes">
-									<label for="blacklist-double-quotes">Double quotes (")</label>
-								</div>
-								<div>
-									<input type="checkbox" id="blacklist-backtick">
-									<label for="blacklist-backtick">Backtick (`)</label>
-								</div>
-								<div>
-									<input type="checkbox" id="blacklist-dot">
-									<label for="blacklist-dot">Dot (.)</label>
-								</div>
-							</div>
-							<div class="checkbox-area">
-								<div>
-									<input type="checkbox" id="blacklist-slash">
-									<label for="blacklist-slash">Slash (/)</label>
-								</div>
-								<div>
-									<input type="checkbox" id="blacklist-backslash">
-									<label for="blacklist-backslash">Backslash (\)</label>
-								</div>
-								<div>
-									<input type="checkbox" id="blacklist-curly-brackets">
-									<label for="blacklist-curly-brackets">Curly brackets ({})</label>
-								</div>
-								<div>
-									<input type="checkbox" id="blacklist-angle-brackets">
-									<label for="blacklist-angle-brackets">Angle brackets (&lt;&gt;)</label>
-								</div>
-							</div>
-						</section>
-					</div>
-				</fieldset>
-			</div>
-		</main>
-		<footer>
-			<div class="github-link">GitHub: <a href="https://github.com/nbsp1221/javascript-obfuscator" target="_blank">https://github.com/nbsp1221/javascript-obfuscator</a></div>
-			<div class="copyright">&copy; <a href="https://retn0.kr" target="_blank">nbsp1221</a>. All rights reserved.</div>
-		</footer>
-	</body>
+<html lang="en" class="bg-gray-900 text-white">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Obfuscator</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./scripts/js-obfuscator.js"></script>
+    <script src="./scripts/index.js"></script>
+  </head>
+  <body class="font-['Roboto'] p-4">
+    <header class="text-center mb-8">
+      <h1 class="text-4xl font-bold text-indigo-400 mb-2">JavaScript Obfuscator</h1>
+      <p class="text-sm text-gray-400">Advanced JS Obfuscation with custom options</p>
+    </header>
+
+    <main class="max-w-5xl mx-auto space-y-8">
+      <div class="bg-gray-800 p-6 rounded-2xl shadow-lg">
+        <label for="input-code" class="block text-lg font-semibold mb-2">Input Code</label>
+        <textarea id="input-code" class="w-full h-40 p-4 bg-gray-700 rounded-lg text-sm resize-none focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="alert('XSS')">alert('XSS')</textarea>
+        <div class="text-sm text-gray-400 mt-2">Length: <span id="input-code-length">0</span></div>
+      </div>
+
+      <div class="text-center">
+        <button id="obfuscate-button" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-lg transition">↓↓↓ Obfuscate ↓↓↓</button>
+      </div>
+
+      <div class="bg-gray-800 p-6 rounded-2xl shadow-lg">
+        <label for="output-code" class="block text-lg font-semibold mb-2">Obfuscated Code</label>
+        <textarea id="output-code" class="w-full h-40 p-4 bg-gray-700 rounded-lg text-sm resize-none" readonly></textarea>
+        <div class="text-sm text-gray-400 mt-2">Length: <span id="output-code-length">0</span></div>
+        <div class="mt-4 text-right">
+          <button id="run-button" class="px-4 py-2 bg-green-600 hover:bg-green-700 rounded-lg text-sm">Run obfuscated code</button>
+        </div>
+      </div>
+
+      <!-- Options -->
+      <div class="bg-gray-800 p-6 rounded-2xl shadow-lg space-y-6">
+        <h2 class="text-2xl font-bold mb-4">Options</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- Variable Settings -->
+          <div>
+            <h3 class="text-lg font-semibold mb-2">Variable</h3>
+            <div class="space-y-2">
+              <label class="flex items-center gap-2">
+                <input type="checkbox" id="option-use-variable" checked class="accent-indigo-500" />
+                Use variable
+              </label>
+              <input type="text" id="option-variable-candidates" placeholder="가나다あいう" value="가나다あいう" class="w-full p-2 rounded bg-gray-700 text-sm" />
+              <div>
+                <label for="option-iteration-count" class="block text-sm mb-1">Iteration Count</label>
+                <input type="number" id="option-iteration-count" min="1" placeholder="50" value="50" class="w-full p-2 rounded bg-gray-700 text-sm" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Blacklist Settings -->
+          <div>
+            <h3 class="text-lg font-semibold mb-2">Blacklist</h3>
+            <div class="grid grid-cols-2 gap-2 text-sm">
+              <label><input type="checkbox" id="blacklist-upper-case" checked class="accent-red-500" /> Upper Case</label>
+              <label><input type="checkbox" id="blacklist-lower-case" checked class="accent-red-500" /> Lower Case</label>
+              <label><input type="checkbox" id="blacklist-number" class="accent-red-500" /> Number</label>
+              <label><input type="checkbox" id="blacklist-space" class="accent-red-500" /> Space ( )</label>
+              <label><input type="checkbox" id="blacklist-dollar" class="accent-red-500" /> Dollar ($)</label>
+              <label><input type="checkbox" id="blacklist-percent" class="accent-red-500" /> Percent (%)</label>
+              <label><input type="checkbox" id="blacklist-asterisk" class="accent-red-500" /> Asterisk (*)</label>
+              <label><input type="checkbox" id="blacklist-underscore" class="accent-red-500" /> Underscore (_)</label>
+              <label><input type="checkbox" id="blacklist-equals" disabled class="accent-red-500" /> Equals (=)</label>
+              <label><input type="checkbox" id="blacklist-single-quotes" class="accent-red-500" /> Single quotes (')</label>
+              <label><input type="checkbox" id="blacklist-double-quotes" class="accent-red-500" /> Double quotes (")</label>
+              <label><input type="checkbox" id="blacklist-backtick" class="accent-red-500" /> Backtick (`)</label>
+              <label><input type="checkbox" id="blacklist-dot" class="accent-red-500" /> Dot (.)</label>
+              <label><input type="checkbox" id="blacklist-slash" class="accent-red-500" /> Slash (/)</label>
+              <label><input type="checkbox" id="blacklist-backslash" class="accent-red-500" /> Backslash (\)</label>
+              <label><input type="checkbox" id="blacklist-curly-brackets" class="accent-red-500" /> Curly Brackets ({})</label>
+              <label><input type="checkbox" id="blacklist-angle-brackets" class="accent-red-500" /> Angle Brackets (&lt;&gt;)</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="text-center mt-10 text-sm text-gray-500">
+      <p>
+        GitHub:
+        <a href="https://github.com/nbsp1221/javascript-obfuscator" target="_blank" class="underline hover:text-white">github.com/nbsp1221/javascript-obfuscator</a>
+      </p>
+      <p class="mt-1">&copy; <a href="https://retn0.kr" target="_blank" class="underline hover:text-white">nbsp1221</a>. All rights reserved.</p>
+    </footer>
+  </body>
 </html>
