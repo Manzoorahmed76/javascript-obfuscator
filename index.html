@@ -26,10 +26,6 @@
       <p class="text-sm text-gray-500 mt-4">Advanced JavaScript Obfuscation Tool with Custom Options</p>
     </header>
 
-    <!-- Your existing content remains untouched -->
-    <main class="max-w-5xl mx-auto space-y-8">
-      <!-- Existing elements below... -->
-
     <main class="max-w-5xl mx-auto space-y-8">
       <div class="bg-gray-800 p-6 rounded-2xl shadow-lg">
         <label for="input-code" class="block text-lg font-semibold mb-2">Input Code</label>
@@ -37,20 +33,26 @@
         <div class="text-sm text-gray-400 mt-2">Length: <span id="input-code-length">0</span></div>
       </div>
 
-<!-- Button to Obfuscate -->
-<div class="flex justify-center">
-  <button id="obfuscate-button" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-lg transition flex items-center justify-center gap-2">
-    <i data-lucide="shield-off"></i>
-    <span>Obfuscate</span>
-  </button>
-</div>
-
+      <!-- Button to Obfuscate -->
+      <div class="flex justify-center">
+        <button id="obfuscate-button" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-lg transition flex items-center justify-center gap-2">
+          <i data-lucide="shield-off"></i>
+          <span>Obfuscate</span>
+        </button>
+      </div>
 
       <div class="bg-gray-800 p-6 rounded-2xl shadow-lg">
         <label for="output-code" class="block text-lg font-semibold mb-2">Obfuscated Code</label>
-        <textarea id="output-code" class="w-full h-40 p-4 bg-gray-700 rounded-lg text-sm resize-none" readonly></textarea>
+        <textarea id="output-code" class="w-full h-40 p-4 bg-gray-700 rounded-lg text-sm resize-none cursor-pointer" readonly></textarea>
         <div class="text-sm text-gray-400 mt-2">Length: <span id="output-code-length">0</span></div>
-        <div class="mt-4 text-right">
+        
+        <!-- Copy Notification -->
+        <div id="copy-notification" class="hidden opacity-0 text-green-400 text-sm mt-2 text-center transition-opacity duration-500">
+          Copied to clipboard!
+        </div>
+
+        <!-- Centered Run Button -->
+        <div class="mt-4 flex justify-center">
           <button id="run-button" class="px-4 py-2 bg-green-600 hover:bg-green-700 rounded-lg text-sm flex items-center gap-2">
             <i data-lucide="play"></i>
             <span>Run obfuscated code</span>
@@ -58,7 +60,7 @@
         </div>
       </div>
 
-      <!-- Options -->
+      <!-- Options Section -->
       <div class="bg-gray-800 p-6 rounded-2xl shadow-lg space-y-6">
         <h2 class="text-2xl font-bold mb-4">Options</h2>
         <div class="grid md:grid-cols-2 gap-6">
@@ -114,7 +116,27 @@
     </footer>
 
     <script>
+      // Load Lucide icons
       lucide.createIcons();
+
+      // Copy output code on click
+      const outputCode = document.getElementById('output-code');
+      const copyNotification = document.getElementById('copy-notification');
+
+      outputCode.addEventListener('click', () => {
+        const code = outputCode.value;
+        if (code) {
+          navigator.clipboard.writeText(code).then(() => {
+            copyNotification.classList.remove('hidden');
+            copyNotification.classList.remove('opacity-0');
+            copyNotification.classList.add('opacity-100');
+
+            setTimeout(() => {
+              copyNotification.classList.add('opacity-0');
+            }, 1500);
+          });
+        }
+      });
     </script>
   </body>
 </html>
