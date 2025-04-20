@@ -26,10 +26,6 @@
       <p class="text-sm text-gray-500 mt-4">Advanced JavaScript Obfuscation Tool with Custom Options</p>
     </header>
 
-    <!-- Your existing content remains untouched -->
-    <main class="max-w-5xl mx-auto space-y-8">
-      <!-- Existing elements below... -->
-
     <main class="max-w-5xl mx-auto space-y-8">
       <div class="bg-gray-800 p-6 rounded-2xl shadow-lg">
         <label for="input-code" class="block text-lg font-semibold mb-2">Input Code</label>
@@ -37,10 +33,16 @@
         <div class="text-sm text-gray-400 mt-2">Length: <span id="input-code-length">0</span></div>
       </div>
 
-      <div class="text-center">
+      <!-- Centered Buttons -->
+      <div class="flex flex-col items-center justify-center gap-4">
         <button id="obfuscate-button" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-lg transition flex items-center justify-center gap-2">
           <i data-lucide="shield-off"></i>
           <span>Obfuscate</span>
+        </button>
+
+        <button id="run-button" class="px-4 py-2 bg-green-600 hover:bg-green-700 rounded-lg text-sm flex items-center gap-2">
+          <i data-lucide="play"></i>
+          <span>Run obfuscated code</span>
         </button>
       </div>
 
@@ -48,12 +50,6 @@
         <label for="output-code" class="block text-lg font-semibold mb-2">Obfuscated Code</label>
         <textarea id="output-code" class="w-full h-40 p-4 bg-gray-700 rounded-lg text-sm resize-none" readonly></textarea>
         <div class="text-sm text-gray-400 mt-2">Length: <span id="output-code-length">0</span></div>
-        <div class="mt-4 text-right">
-          <button id="run-button" class="px-4 py-2 bg-green-600 hover:bg-green-700 rounded-lg text-sm flex items-center gap-2">
-            <i data-lucide="play"></i>
-            <span>Run obfuscated code</span>
-          </button>
-        </div>
       </div>
 
       <!-- Options -->
